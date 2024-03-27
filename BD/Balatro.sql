@@ -1,17 +1,7 @@
 /*
 Codigo Ejecutado
 
-CREACIÓN DE ENUMS:
-
-CREATE TYPE valor_carta_poker AS
-ENUM ('A','K','Q','J','10','9','8','7','6','5','4','3','2');
-
-CREATE TYPE palo_carta_poker AS
-ENUM ('Diamante','Trébol','Corazón','Pica','Todos');
-
-CREATE TYPE operadores AS
-ENUM('+','-','*');
-
+CREACIÓN DE ENUMS (No funcionan con JAVA):
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -64,16 +54,14 @@ ADD COLUMN palo palo_carta_poker;
 ALTER TABLE cartas_poker
 ADD CONSTRAINT pk_cartas_poker PRIMARY KEY (valor, palo);
 
-
-
-CREATE TYPE rareza_comodines AS
-ENUM('Común', 'Inusual', 'Raro', 'Legendario');
-
 ALTER TABLE jokers
 ADD COLUMN rareza rareza_comodines;
 
 ALTER TABLE cartas_poker
 ADD CONSTRAINT cf_cartas_poker_mejora FOREIGN KEY (mejora) REFERENCES mejoras(nombre);
+
+ALTER TABLE jokers
+ADD CONSTRAINT pk_jokers PRIMARY KEY(nombre);
 */
 
 
@@ -99,3 +87,4 @@ CREATE TABLE IF NOT EXISTS public.sobres
 );
 */
 
+DELETE FROM jokers WHERE nombre='g';
