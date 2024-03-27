@@ -24,8 +24,40 @@ public class App {
          conexion.close();
     }
 
+        public static void main(String[] args) throws Exception {
+        //Conectar BD
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println("Error en registro driver");
+        }
+
+        Connection conexion = null;
+        conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Balatro", "dam", "dam");
+        Statement st = conexion.createStatement();
+        conexion.setAutoCommit(false);
+
+        System.out.println("Menú Balatro:" + "\n " + "\n 2. Consultar");
+        int eleccion = sc.nextInt();
+        switch (eleccion) {
+            case 1:
+                
+                break;
+            case 2:
+                consulatBD(st, conexion);
+                break;
+            default:
+                break;
+        }
+
+       
+    }
+}
+
+/* 
     static public void insertarDatos(Connection conexion){
-         //Insertar Datos
+         //Insertar Datos a la BD
          String sentenciaSQL = "INSERT INTO jokers VALUES(?, ?)";
          PreparedStatement sentencia = null;
  
@@ -46,33 +78,4 @@ public class App {
                  }
              } 
     }
-    public static void main(String[] args) throws Exception {
-        //Conectar BD
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (Exception e) {
-            // TODO: handle exception
-            System.out.println("Error en registro driver");
-        }
-
-        Connection conexion = null;
-        conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Balatro", "dam", "dam");
-        Statement st = conexion.createStatement();
-        conexion.setAutoCommit(false);
-
-        System.out.println("Menú BD Balatro:" + "\n 1. Insertar Datos" + "\n 2. Consultar");
-        int eleccion = sc.nextInt();
-        switch (eleccion) {
-            case 1:
-                insertarDatos(conexion);
-                break;
-            case 2:
-                consulatBD(st, conexion);
-                break;
-            default:
-                break;
-        }
-
-       
-    }
-}
+    */
