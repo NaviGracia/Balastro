@@ -86,6 +86,17 @@ public class App {
         }
     }
 
+    public static void modificarRegistro(Connection conexion){
+        System.out.println("Inserta la tabla de la que desea eliminar registros:");
+        String tabla = sc.nextLine();
+        if (tabla.equalsIgnoreCase("jokers")) {
+            String sentenciaSQL = "UPDATE " + tabla + "SET nombre = ?, efecto = ?, rareza = ? WHERE nombre = ?";
+            PreparedStatement sentencia = null;
+            sentencia = conexion.prepareStatement(sentenciaSQL);
+            sentencia.setString(1, sentenciaSQL);
+        }
+    }
+
         public static void main(String[] args) throws Exception {
         //Conectar BD
         try {
@@ -101,7 +112,7 @@ public class App {
         conexion.setAutoCommit(false);
         int eleccion;
         do {    
-            System.out.println("Menú Balatro:" + "\n 1. Abrir Sobre (En Desarrollo)" + "\n 2. Consultar Carta/Joker" + "\n 3. Insertar Carta/Joker" + "\n 4. Eliminar Carta/Joker" + "\n 9. Salir");
+            System.out.println("Menú Balatro:" + "\n 1. Abrir Sobre (En Desarrollo)" + "\n 2. Consultar Carta/Joker" + "\n 3. Insertar Carta/Joker" + "\n 4. Eliminar Carta/Joker" + "\n 5. Modificar Registro" + "\n 9. Salir");
             eleccion = sc.nextInt();
             sc.nextLine();
             switch (eleccion) {
@@ -116,6 +127,9 @@ public class App {
                     break;
                 case 4:
                     eliminarRegistro(conexion);
+                    break;
+                case 5:
+                modificarRegistro(conexion);
                     break;
                 case 9: 
                     System.out.println("Saliendo del Programa");
