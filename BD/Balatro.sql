@@ -85,6 +85,63 @@ CREATE TABLE IF NOT EXISTS public.sobres
     cantidad cantidad_cartas,
     CONSTRAINT pk_sobres PRIMARY KEY (nombre)
 );
+---------------------------------------------------------------------------------------------
+//CREACIÓN DE TRIGGERS
+
+CREATE OR REPLACE FUNCTION validar_joker_unico()
+RETURNS TRIGGER AS $$
+BEGIN
+ IF EXISTS (SELECT 1 FROM jokers WHERE nombre = NEW.nombre) THEN
+ 	RAISE EXCEPTION 'Joker ya añadido a la BD.';
+ END IF;
+ RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER validar_joker
+BEFORE INSERT ON jokers
+FOR EACH ROW
+EXECUTE FUNCTION validar_joker_unico();
 */
 
-DELETE FROM jokers WHERE nombre='g';
+INSERT INTO jokers VALUES('Banner', 'h', 'Común');
+
+/*
+EJEMPLO TRIGGERS:
+
+//CREAMOS FUNCIÓN
+CREATE OR REPLACE FUNCTION validar_joker_unico()
+RETURNS TRIGGER AS $$
+BEGIN
+ IF EXISTS (SELECT 1 FROM clientes WHERE email = NEW.email) THEN
+  RAISE EXCEPTION 'El email ya existe en la base de datos.';
+ END IF;
+ RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+//CREAMOS TRIGGER
+CREATE TRIGGER clientes_validar_email_unico
+BEFORE INSERT ON clientes
+FOR EACH ROW 
+EXECUTE FUNCTION validar_email_unico();
+
+//OTRO EJEMPLO
+
+//CREAMOS FUNCIÓN
+CREATE OR REPLACE FUNCTION actualizar_num_comentarios()
+RETURNS TRIGGER AS $$
+BEGIN
+ UPDATE usuarios SET num_comentarios = num_comentarios-1
+ WHERE id = OLD.usuario.id;
+ RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+//CREAMOS TRIGGER
+CREATE TRIGGER comentarios_actualizar_num_comentarios
+AFTER DELETE ON comentarios
+FOR EACH ROW 
+EXECUTE FUNCTION actualizar_num_comentarios();
+------------------------------------------------------------------------------
+*/
