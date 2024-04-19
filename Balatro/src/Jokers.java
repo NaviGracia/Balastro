@@ -1,6 +1,0 @@
-/**
- * Jokers
- */
-public class Jokers {
-    
-}
