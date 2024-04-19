@@ -3,6 +3,9 @@ Ejemplo de copiar (Ya esta en el registro de INSERTS)
 INSERT INTO jokers (name, effect, rarity, cost) VALUES('', '', '', );
 */
 
+
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('', '', '', );
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('', '', '', );
 INSERT INTO jokers (name, effect, rarity, cost) VALUES('', '', '', );
 
 
@@ -50,6 +53,38 @@ INSERT INTO jokers (name, effect, rarity, cost) VALUES('Scary Face', 'Played fac
 INSERT INTO jokers (name, effect, rarity, cost) VALUES('Abstract Joker', '+3 Mult for each Joker card (Currently +0 Mult)', 'Common', 4);
 INSERT INTO jokers (name, effect, rarity, cost) VALUES('Delayed Gratifcation', 'Earn $2 per discard if no discards are used by end of the round', 'Common', 4);
 INSERT INTO jokers (name, effect, rarity, cost) VALUES('Hack', 'Retrigger each played 2, 3, 4 or 5', 'Uncommon', 6);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Pareidolia', 'All cards are considered face cards', 'Uncommon', 5);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Gros Michel', '+15 Mult 1 in 4 chance this is destroyed at the end of round', 'Common', 5);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Even Steven', 'Played cards with even rank give +4 when scored (10, 8, 6, 4, 2)', 'Common', 4);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Odd Todd', 'Played cards with odd rank give +30 Chips when scored (A, 9, 7, 5, 3)', 'Common', 4);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Scholar', 'Played Aces give +20 Chips and +4 Mult when scored', 'Common', 4);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Business Card', 'Played face cards have a 1 in 2 chance to give 2$ when scored', 'Common', 4);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Supernova', 'Adds the number of times poker hand has been played to Mult', 'Common', 5);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Ride the Bus', '+1 Mult per consecutive hand played without a scoring face card (Currently +0 Mult)', 'Common', 6);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Space Joker', '1 in 4 chance to upgrade level of played poker hand', 'Uncommon', 5);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Egg', 'Gains $3 of sell value at end of round', 'Common', 4);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Burglar', 'When Blind is selected, gain +3 Hands and lose all discards', 'Uncommon', 6);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Blackboard', 'X3 Mult if all cards held in hand are Spades or Clubs', 'Uncommon', 6);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Runner', 'Gains +10 Chips if played hand contains a Staright (Currently +20 Chips)', 'Common', 5);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Ice Cream', '+100 Chips -5 Chips for every hand played', 'Common', 5);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('DNA', 'If first hand of round has only 1 card, add a permanent copy to deck and draw it to hand', 'Rare', 8);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Splash', 'Every played card counts in scoring', 'Common', 3);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Blue Joker', '+2 Chips for each remaining card in deck (Currently +104 Chips)', 'Common', 5);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Sixth Sense', 'If first hand of round is a single 6, destroy it and create a Spectral card (Must have room)', 'Rare', 6);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Constellation', 'Gains X0.1 Mult per Planet card used (Currently X1 Mult)', 'Uncommon', 6);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Hiker', 'Every playe dcarad permanently gains +4 Chips when scored', 'Uncommon', 5);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Faceless Joker', 'Earn $5 if 3 or more face cards are discarded at the same time', 'Common', 4);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Green Joker', '+1 Mult per hand played -1 Mult per discard (Currently +0 Mult)', 'Common', 4);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Superposition', 'Create a Tarot card if poker hand contains an Ace and a Straight (Must have room)', 'Common', 4);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('To Do List', 'Earn $5 if poker hand is a [Poker Hand], poker hand changes on every payout', 'Common', 4);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Cavendish', 'X3 Mult 1 in 1000 chance this card is destroyed at the end of round', 'Common', 4);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Card Shap', 'X3 Mult if played poker hand has already been played this round', 'Uncommon', 6);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Red Card', 'Gains +3 Mult when any Booster Pack is skipped (Currently +0 Mult)', 'Common', 5);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Madness', 'When Blind is selected, gain X0.5 Mult and destroy a random Joker (Currently X1 Mult)', 'Uncommon', 7);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Square Joker', 'Gains +4 Chips if played hand has exactly 4 cards (Currently 16 Chips)', 'Common', 5);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Séance', 'If poker hand is a Straight Flush, create a random Spectral card (Must have room)', 'Rare', 7);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Riff-Raff', 'When Blind is selected, create 2 Common Jokers (Must have room)', 'Common', 4);
+INSERT INTO jokers (name, effect, rarity, cost) VALUES('Vampire', 'Gains X0.2 Mult per Enhanced card played, removes card Enhancement (Currently X1 Mult)', 'Uncommon', 7);
 
 ------------------------FUNCTIONS AND TRIGGERS------------------------
 
@@ -76,14 +111,13 @@ ALTER TABLE jokers ALTER COLUMN effect TYPE varchar(150);
 
 BEGIN;
 
-
 CREATE TABLE IF NOT EXISTS public.jokers
 (
 	id SERIAL,
     name character varying(20) COLLATE pg_catalog."default" NOT NULL,
-    effect character varying(50) COLLATE pg_catalog."default",
+    effect character varying(150) COLLATE pg_catalog."default",
     rarity character varying(25) COLLATE pg_catalog."default",
-    cost money,
+    cost integer,
     CONSTRAINT pk_jokers PRIMARY KEY (id)
 );
 
